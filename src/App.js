@@ -6,7 +6,7 @@ import CountryPicker from './components/CountryPicker'
 
 import styles from './App.module.css'
 
-import {fatchdata, fetchdata} from './api/index'
+import { fetchdata } from './api/index'
 
 class App extends React.Component {
 
