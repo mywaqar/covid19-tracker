@@ -6,22 +6,30 @@ import CountryPicker from './components/CountryPicker'
 
 import styles from './App.module.css'
 
-import { fetchdata } from './api/index'
+import { fetchData } from './api/index'
 
 class App extends React.Component {
 
-   async componentDidMount (){
 
-        const data = await fetchdata();
-        console.log (data)
+    state = {
+        data: {},
+    }
+
+    async componentDidMount() {
+
+        const fetchedData = await fetchData();
+        console.log (fetchedData)
+        this.setState({ data: fetchedData })
     }
 
     render() {
 
+        const { data } = this.state
+
         return (
 
             <div className={styles.container}>
-                <Cards/>
+                <Cards apidata={data} />
                 <Chart></Chart>
                 <CountryPicker></CountryPicker>
             </div>
