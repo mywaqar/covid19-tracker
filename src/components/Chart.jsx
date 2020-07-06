@@ -1,21 +1,38 @@
-import React , {useState, useEffect} from 'react'
-import {  } from "module";
+import React, { useState, useEffect } from 'react'
+import { fetchDailyData } from '../api/index'
+import { Line, Bar } from 'react-chartjs-2'
 
-import {Line, Bar} from 'react-chartjs-2'
-
-import {fetchDailyData} from './api/index'
+import styles from './Chart.module.css'
 
 const Chart = () => {
 
-    const  [dailyData, setDailyData] = useState({});
-    
-    useEffect(()=> {
-        const fetchAPI = async ()=> {
+    const [dailyData, setDailyData] = useState({})
 
-            setDailyData( await fetchDailyData());
+    useEffect(() => {
+        const fetchAPI = async () => {
+            const dailyData = await fetchDailyData()
+            setDailyData(dailyData)
         }
         fetchAPI();
     })
+
+    const lineChart = (
+        <Line
+        data={
+            {
+                lables: '',
+                datasets: [{},{}]
+            }
+        } 
+        
+        >
+
+
+        </Line>
+
+    )
+
+
 
 
     return (
