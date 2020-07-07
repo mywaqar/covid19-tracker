@@ -8,6 +8,7 @@ import styles from './App.module.css'
 
 import { fetchData } from './api/index'
 
+
 class App extends React.Component {
 
 
@@ -18,7 +19,7 @@ class App extends React.Component {
     async componentDidMount() {
 
         const fetchedData = await fetchData();
-        //console.log (fetchedData)
+        console.log (fetchedData)
         this.setState({ data: fetchedData })
     }
 
@@ -29,9 +30,9 @@ class App extends React.Component {
         return (
 
             <div className={styles.container}>
-                <Cards apidata={data} />
-                <Chart></Chart>
+                <Cards apidata = {data}/>
                 <CountryPicker></CountryPicker>
+                <Chart></Chart>
             </div>
         )
     }

@@ -1,5 +1,8 @@
 .container{
     display: flex;
     justify-content: center;
-    width: 85%;
+    width: 75%;
+    flex-direction: column;
+    align-items: center;
+
 }

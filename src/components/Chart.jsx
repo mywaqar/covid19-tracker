@@ -44,7 +44,9 @@ const Chart = () => {
 
     return (
 
+
         <div className = {styles.container}>
+            <div><h1> Last 2 months Data</h1></div>
             {lineChart}
         </div>
     )

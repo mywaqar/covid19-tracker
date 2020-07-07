@@ -9,7 +9,7 @@ const Cards = ({apidata:{confirmed, recovered, deaths, lastUpdate}}) => {
     if(!confirmed){
         return 'Loading...'
     }
-
+    
     return (
 
         <div className={styles.container}>
