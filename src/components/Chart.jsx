@@ -6,39 +6,46 @@ import styles from './Chart.module.css'
 
 const Chart = () => {
 
-    const [dailyData, setDailyData] = useState({})
+
+    const [dailyData, setDailyData] = useState([]);
 
     useEffect(() => {
         const fetchAPI = async () => {
-            const dailyData = await fetchDailyData()
-            setDailyData(dailyData)
+            setDailyData(await fetchDailyData());    
         }
+
+     //   console.log("From Effect", dailyData)
+
         fetchAPI();
-    })
+    });
 
     const lineChart = (
-        <Line
-        data={
-            {
-                lables: '',
-                datasets: [{},{}]
+        dailyData.length > 0
+        ? (
+        <Line 
+         data = {{
+                labels: dailyData.map(({ date })=> date),
+                datasets: [{
+                    data: dailyData.map(({confirmed})=> confirmed),
+                    label: 'Infected',
+                    borderColor: '#3333ff',
+                    fill:true,
+                }, {
+                    data: dailyData.map(({deaths}) => deaths ),
+                    label: 'deaths',
+                    borderColor: 'rgba(255,0,0,0.5)',
+                    backgroundColor: 'rgba(255,0,0,0.5)',
+                    fill:true,
+                }]
             }
         } 
-        
-        >
-
-
-        </Line>
-
+        />):null
     )
-
-
-
 
     return (
 
-        <div>
-            <h1>Chart</h1>
+        <div className = {styles.container}>
+            {lineChart}
         </div>
     )
 }
