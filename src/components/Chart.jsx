@@ -46,7 +46,7 @@ const Chart = () => {
 
 
         <div className = {styles.container}>
-            <div><h1> Last 2 months Data</h1></div>
+            <div><h1> Past 2 months Data</h1></div>
             {lineChart}
         </div>
     )

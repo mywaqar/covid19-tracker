@@ -6,7 +6,7 @@ import CountryPicker from './components/CountryPicker'
 
 import styles from './App.module.css'
 
-import { fetchData } from './api/index'
+import { fetchData, fetchCountries } from './api/index'
 
 
 class App extends React.Component {
@@ -14,6 +14,7 @@ class App extends React.Component {
 
     state = {
         data: {},
+        country:'',
     }
 
     async componentDidMount() {
@@ -21,6 +22,13 @@ class App extends React.Component {
         const fetchedData = await fetchData();
         console.log (fetchedData)
         this.setState({ data: fetchedData })
+    }
+
+    handlecountrychange = async  (country) => {
+        const fetchedData = await fetchData(country)
+        console.log (fetchedData)
+        this.setState({data: fetchedData})
+
     }
 
     render() {
@@ -31,7 +39,7 @@ class App extends React.Component {
 
             <div className={styles.container}>
                 <Cards apidata = {data}/>
-                <CountryPicker></CountryPicker>
+                <CountryPicker handlecountrychange = {this.handlecountrychange}></CountryPicker>
                 <Chart></Chart>
             </div>
         )
