@@ -1,5 +1,6 @@
 .container{
     margin: 50px 0;
+    display: flex;
 }
 
 .Card{
@@ -11,9 +12,19 @@
 }
 
 .recovered{
-    border-bottom: 10px solid rgba(0, 255, 0, .5);
+    border-bottom: 10px solid rgba(209, 243, 15, 0.5);
 }
 
 .deaths{
     border-bottom: 10px solid rgba(255, 0, 0, .5);
+}
+
+.active{
+    border-bottom: 10px solid rgba(8, 44, 5, 0.7);
+}
+
+@media (max-width:770px) {
+    .Card{
+        margin: 2% 0 !important;
+    }
 }
