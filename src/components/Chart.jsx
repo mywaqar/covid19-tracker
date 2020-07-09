@@ -42,7 +42,7 @@ const Chart = ({ apidata: { confirmed, recovered, deaths }, country }) => {
                     }
                     options={
                         {
-                            title: { display: true, fontSize: 18, fontColor: 'rgba(255,0,0,0.5)', text: `Past 2 months daily Data` }
+                            title: { display: true, fontSize: 18, fontColor: 'rgba(255,0,0,0.5)', text: `Daily Data for past 2 months` }
                         }
                     }
                 />) : null
@@ -58,7 +58,7 @@ const Chart = ({ apidata: { confirmed, recovered, deaths }, country }) => {
                         datasets: [{
                             data: [confirmed.value, recovered.value, deaths.value],
                             label: 'People',
-                            backgroundColor: ['rgba(0, 0, 255, .5)', 'rgba(0, 255, 0, .5)', 'rgba(255, 0, 0, .5)']
+                            backgroundColor: ['rgba(0, 0, 255, .5)', 'rgba(8, 44, 5, 0.7)', 'rgba(255, 0, 0, .5)']
                         }]
                     }
                 }

@@ -42,6 +42,7 @@ class App extends React.Component {
                 <Cards apidata={data} />
                 <CountryPicker handlecountrychange={this.handlecountrychange}></CountryPicker>
                 <Chart apidata={data} country={country}></Chart>
+                <p>Github: https://github.com/mywaqar<br/>Surge Url: http://covid19_tracker_mywaqar.surge.sh/</p>
             </div>
         )
     }
