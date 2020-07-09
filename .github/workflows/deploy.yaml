@@ -1,0 +1,24 @@
+name: Deploy Covid-19 tracker
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2-beta
+      with:
+        node-version: 12 
+    - uses: Borales/actions-yarn@v2.1.0
+      with:
+        cmd: install
+    - run: yarn build
+    - run: npm install -g surge
+    - run: surge ./build covid19_tracker_mywaqar.surge.sh --token ${{secrets.COVID_TRACKER}}
