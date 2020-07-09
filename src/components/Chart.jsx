@@ -15,10 +15,8 @@ const Chart = ({ apidata: { confirmed, recovered, deaths }, country }) => {
             setDailyData(await fetchDailyData());
         }
 
-        //   console.log("From Effect", dailyData)
-
         fetchAPI();
-    },[]);
+    }, []);
 
     const lineChart = (
         dailyData.length > 0
@@ -32,7 +30,8 @@ const Chart = ({ apidata: { confirmed, recovered, deaths }, country }) => {
                                 label: 'Infected',
                                 borderColor: '#3333ff',
                                 fill: true,
-                            }, {
+                            },
+                            {
                                 data: dailyData.map(({ deaths }) => deaths),
                                 label: 'deaths',
                                 borderColor: 'rgba(255,0,0,0.5)',
@@ -41,10 +40,11 @@ const Chart = ({ apidata: { confirmed, recovered, deaths }, country }) => {
                             }]
                         }
                     }
-                    options={{
-                        title: { display: true,  fontSize:18 , fontColor: 'rgba(255,0,0,0.5)',  text: `Past 2 months daily Data` },
-
-                    }}
+                    options={
+                        {
+                            title: { display: true, fontSize: 18, fontColor: 'rgba(255,0,0,0.5)', text: `Past 2 months daily Data` }
+                        }
+                    }
                 />) : null
     )
 
@@ -56,20 +56,16 @@ const Chart = ({ apidata: { confirmed, recovered, deaths }, country }) => {
                     {
                         labels: ['Infected', 'Recovered', 'Deaths'],
                         datasets: [{
+                            data: [confirmed.value, recovered.value, deaths.value],
                             label: 'People',
-                            backgroundColor: ['rgba(0, 0, 255, .5)',
-                                'rgba(0, 255, 0, .5)',
-                                'rgba(255, 0, 0, .5)',
-                            ],
-                            data: [confirmed.value, recovered.value, deaths.value]
+                            backgroundColor: ['rgba(0, 0, 255, .5)', 'rgba(0, 255, 0, .5)', 'rgba(255, 0, 0, .5)']
                         }]
                     }
                 }
                     options={
                         {
                             legend: { display: false },
-                            title: { display: true,fontSize:18 , fontColor: 'rgba(0,0,255,0.5)', text: `Current State in ${country}` },
-
+                            title: { display: true, fontSize: 18, fontColor: 'rgba(0,0,255,0.5)', text: `Current State in ${country}`}
                         }
                     }
 

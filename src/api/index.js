@@ -5,9 +5,9 @@ const url = 'https://covid19.mathdro.id/api';
 
 
 export const fetchData = async (country) => {
-    
+
     let changeableUrl = url;
-    if(country){
+    if (country) {
         changeableUrl = `${url}/countries/${country}`
     }
 
@@ -30,8 +30,8 @@ export const fetchDailyData = async (country) => {
 
         let fData = []
 
-        for (let index = data.length-60; index < data.length; index++) {
-             fData = [...fData,data[index]]
+        for (let index = data.length - 60; index < data.length; index++) {
+            fData = [...fData, data[index]]
         }
 
         const modifiedData = fData.map((arrayObj) => (
@@ -48,10 +48,10 @@ export const fetchDailyData = async (country) => {
     }
 }
 
-export const fetchCountries = async() => {
+export const fetchCountries = async () => {
 
     try {
-        const {data: {countries}} = await axios.get(`${url}/countries`);
+        const { data: { countries } } = await axios.get(`${url}/countries`);
         return countries.map((country) => country.name)
     } catch (error) {
         console.log(error)
